@@ -46,12 +46,8 @@ for line in src:
     if "|" in line:
         rules.add(line)
 
-
-def swap(l: list[str], v1: str, v2: str):
-    i1 = l.index(v1)
-    i2 = l.index(v2)
-    l[i1], l[i2] = v2, v1
-
+mid = lambda p: int(p[len(p) - 1 >> 1])
+has_rule = lambda p, i, j: p[i] + "|" + p[j] not in rules
 
 for line in src:
     if "|" not in line:
@@ -61,19 +57,19 @@ for line in src:
 
         for i in range(len(pages)):
             for j in range(i + 1, len(pages)):
-                if pages[i] + "|" + pages[j] not in rules:
+                if has_rule(pages, i, j):
                     valid = False
 
         if valid:
-            part1 += int(pages[len(pages) - 1 >> 1])
+            part1 += mid(pages)
 
         else:
             for i in range(len(pages)):
                 for j in range(i + 1, len(pages)):
-                    if pages[i] + "|" + pages[j] not in rules:
-                        swap(pages, pages[i], pages[j])
+                    if has_rule(pages, i, j):
+                        pages[i], pages[j] = pages[j], pages[i]  # swapper-roo
 
-            part2 += int(pages[len(pages) - 1 >> 1])
+            part2 += mid(pages)
 
 print("part1:", part1)
 print("part2:", part2)
