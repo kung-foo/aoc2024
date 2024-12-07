@@ -1,13 +1,8 @@
 #!/usr/bin/env python3
 
-import os
-import sys
-import random
 from typing import Generator, List, Set
-from wsgiref.util import request_uri
 
 import numpy as np
-from fontTools.voltLib.ast import Pos
 
 src = open("input.txt", "r").readlines()
 
