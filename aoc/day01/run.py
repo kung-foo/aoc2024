@@ -5,6 +5,7 @@ import sys
 import random
 import numpy as np
 from collections import defaultdict
+import goobar
 
 part1 = 0
 part2 = 0
